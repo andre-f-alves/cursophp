@@ -15,14 +15,22 @@
             Sorteador de Números
         </h1>
         <?php
-            $min = 0;
-            $max = 100;
-            $numero = mt_rand($min, $max);
-            echo "<p>Gerando um número entre <strong>$min</strong> e <strong>$max</strong>.</p>";
-            echo "<p>Número sorteado: <strong>$numero</strong></p>";
+            /*
+                Funções para números aleatórios:
+                
+                - 'rand()': algoritmo Linear Congrential Generator (1951)
+                
+                - 'mt_rand()': algoritmo Mersenne Twister (1997)
+                
+                - 'random_int()': números aleatórios criptografados
+            */
+
+            $numero = mt_rand(0, 100);
+            echo "<p>Gerando um número entre <strong>0</strong> e <strong>100</strong>.</p>";
+            echo "<p>Número gerado: <strong>$numero</strong></p>";
         ?>
         <button onclick="javascript:window.location.reload()">Sortear</button>
-    </main>    
+    </main>
 </body>
 
 </html>

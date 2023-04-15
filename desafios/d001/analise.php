@@ -14,19 +14,14 @@
         <h1>
             Resultado do Processamento
         </h1>
-        <?php
-            $numero = $_GET["numero"] ?? 0;
-            $antecessor = $numero - 1;
-            $sucessor = $numero + 1;
-            echo "<p>O número informado foi <strong>$numero</strong>.</p>";
-            echo <<< resposta
-            <p>
-                Número antecessor: <strong>$antecessor</strong>
-                <br>
-                Número sucessor: <strong>$sucessor</strong>
-            </p>
-            resposta;
-        ?>
+        <p>
+            <?php
+                $numero = $_GET["numero"] ?? 0;
+                echo "O número informado foi <strong>$numero</strong>.";
+                echo "<br>Número antecessor: <strong>" . ($numero - 1) . "</strong>";
+                echo "<br>Número sucessor: <strong>" . ($numero + 1) . "</strong>";
+            ?>
+        </p>
         <button onclick="javascript:window.location.href='index.html'">Voltar</button>
     </main>
     </script>

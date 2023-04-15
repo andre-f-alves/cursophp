@@ -13,13 +13,26 @@
             Resultado da conversão
         </h1>
         <?php
-            $dolar = 4.91;
-            $reais = (float) $_GET["reais"];
+            $cotacao = 4.91;
+            $real = $_GET["real"];
+            $dolar = $real / $cotacao;
+            
+            /* 
+                Formatação com 'number_format()'
+            */
+            // echo "<p>R$" . number_format($real, 2, ",", ".") . " equivalem a US$" . number_format($dolar, 2, ",", ".") . "</p>";
+            
 
-            $conversao = $reais * $dolar;
+            /* 
+                Formatação internacional com a biblioteca 'intl'
+            */   
+            $padrao = numfmt_create("pt_BR", NumberFormatter::CURRENCY);
 
-            echo "R$$reais = US$$conversao";
+            echo "<p><strong>" . numfmt_format_currency($padrao, $real, "BRL") . "</strong> equivalem a <strong>" . numfmt_format_currency($padrao, $dolar, "USD") . "</strong>*.</p>";
+
+            echo "<p>*Cotação fixa de <strong>" . numfmt_format_currency($padrao, $cotacao, "BRL") . "</strong>.</p>";
         ?>
+        <button onclick="javascript:window.location.href='index.html'">Voltar</button>
     </main>
 </body>
 </html>
