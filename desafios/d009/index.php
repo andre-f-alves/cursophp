@@ -21,16 +21,16 @@
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
 
             <label for="valor1">1º Valor:</label>
-            <input type="number" name="valor1" id="valor1" min="0" step="0.01" value="<?=$valor1?>">
+            <input type="number" name="valor1" id="valor1" min="0" step="0.01" required value="<?=$valor1?>">
             
             <label for="peso1">1º Peso:</label>
-            <input type="number" name="peso1" id="peso1" min="1" value="<?=$peso1?>">
+            <input type="number" name="peso1" id="peso1" min="1" required value="<?=$peso1?>">
             
             <label for="valor2">2º Valor:</label>
             <input type="number" name="valor2" id="valor2" min="0" step="0.01" value="<?=$valor2?>">
             
             <label for="peso2">2º Peso:</label>
-            <input type="number" name="peso2" id="peso2" min="1" value="<?=$peso2?>">
+            <input type="number" name="peso2" id="peso2" min="1" required value="<?=$peso2?>">
 
             <input type="submit" value="Calcular">
         </form>
