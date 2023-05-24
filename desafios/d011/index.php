@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio 11 | Reajustador de Preços</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        input[type=range] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    </style>
 </head>
 <body>
     
@@ -21,10 +27,10 @@
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
 
             <label for="preco">Preço do produto (R$):</label>
-            <input type="number" name="preco" id="preco" step="0.01" value="<?=$preco?>">
+            <input type="number" name="preco" id="preco" min="0.10" step="0.01" value="<?=$preco?>">
 
-            <label for="percentual">Percentual de reajuste (<strong><output id="valor"><?=$percentual?></output>%</strong>):</label>
-            <input type="range" name="percentual" id="percentual" oninput="valor.innerHTML = Number(percentual.value)" value="<?=$percentual?>" style="padding-left: 0; padding-right: 0;">
+            <label for="percentual">Percentual de reajuste (<strong><output id="valor"></output>%</strong>):</label>
+            <input type="range" name="percentual" id="percentual" min="0" max="100" step="1" oninput="exibirPercentual()" value="<?=$percentual?>">
 
             <input type="submit" value="Calcular Reajuste">
         </form>
@@ -39,5 +45,13 @@
             echo "<p>Com <strong>$percentual% de aumento</strong>, o produto de " . numfmt_format_currency($padrao, $preco, "BRL") . " passa a custar <strong>" . numfmt_format_currency($padrao, $reajuste, "BRL") . "</strong>.</p>";
         ?>
     </section>
+    
+    <script>
+        exibirPercentual();
+
+        function exibirPercentual() {
+            valor.innerText = percentual.value;
+        }
+    </script>
 </body>
 </html>

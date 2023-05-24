@@ -11,7 +11,7 @@
     
     <?php
         $ano_atual = date("Y");
-        $nascimento = $_GET['nascimento'] ?? 1;
+        $nascimento = $_GET['nascimento'] ?? 2000;
         $ano = $_GET['ano'] ?? $ano_atual;
     ?>
     
@@ -20,10 +20,10 @@
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
 
             <label for="nascimento">Ano de Nascimento:</label>
-            <input type="number" name="nascimento" id="nascimento" min="1" value="<?=$nascimento?>">
+            <input type="number" name="nascimento" id="nascimento" min="1" max="<?=($ano_atual - 1)?>" value="<?=$nascimento?>">
 
             <label for="ano">Ano (ano atual: <?=$ano_atual?>):</label>
-            <input type="number" name="ano" id="ano" value="<?=$ano?>">
+            <input type="number" name="ano" id="ano" min="<?=$ano_atual?>" value="<?=$ano?>">
 
             <input type="submit" value="Calcular Idade">
         </form>
@@ -33,9 +33,9 @@
         <h2>Resultado</h2>
 
         <?php
-            $resultado = $ano - $nascimento;
+            $idade = $ano - $nascimento;
 
-            echo "<p>Ano de nascimento: $nascimento<br> Idade em $ano: <strong>$resultado anos</strong></p>";
+            echo "<p>Ano de nascimento: $nascimento<br> Idade em $ano: <strong>$idade anos</strong></p>";
         ?>
     </section>
 </body>
