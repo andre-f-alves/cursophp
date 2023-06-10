@@ -10,7 +10,7 @@
 <body>
 
     <?php
-        $segundos = $_GET['segundos'];
+        $tempo_s = $_GET['segundos'] ?? 0;
     ?>
 
     <main>
@@ -21,7 +21,7 @@
         <form action="<?=$_SERVER['PHP_SELF']?>" method="get">
 
             <label for="segundos">Tempo (segundos):</label>
-            <input type="number" name="segundos" id="segundos" value="<?=$segundos?>">
+            <input type="number" name="segundos" id="segundos" min="0" step="1" value="<?=$tempo_s?>">
 
             <input type="submit" value="Calcular">
         </form>
@@ -31,18 +31,18 @@
         <h2>Resultado do Cálculo</h2>
 
         <?php
-            $semanas = (int) ($segundos / 604800);
-            $dias = (int) (($segundos % 604800) / 86400);
-            $horas = (int) (($segundos % 86400) / 3600);
-            $minutos = (int) (($segundos % 3600) / 60);
-            $restante = $segundos % 60;
+            $semanas = (int) ($tempo_s / 604800);
+            $dias = (int) (($tempo_s % 604800) / 86400);
+            $horas = (int) (($tempo_s % 86400) / 3600);
+            $minutos = (int) (($tempo_s % 3600) / 60);
+            $segundos = $tempo_s % 60;
 
             echo "<ul>";
             echo "<li>Semanas: $semanas</li>";
             echo "<li>Dias: $dias</li>";
             echo "<li>Horas: $horas</li>";
             echo "<li>Minutos: $minutos</li>";
-            echo "<li>Segundos: $restante</li>";
+            echo "<li>Segundos: $segundos</li>";
             echo "</ul>";
         ?>
     </section>
